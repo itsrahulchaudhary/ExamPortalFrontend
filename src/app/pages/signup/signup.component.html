@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row" style="margin-top: 20px;">
             <div class="container text-center">
-                <img src="../../../assets/logo.png" alt="" width="150" >
+                <!--  <img src="../../../assets/logo.png" alt="" width="150" >-->
             </div>
             <div class="col-md-6 offset-md-3">
                 <h1 class="text-center">Register Here</h1>
@@ -12,7 +12,8 @@
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Username</mat-label>
                         <input  [(ngModel)]="user.username" name="username" matInput placeholder="Enter Here">
-                      </mat-form-field>
+                        <mat-hint>Username must be unique!!!</mat-hint> 
+                    </mat-form-field>
 
                     <!--Password field-->
                     <mat-form-field class="full-width" appearance="outline">
