@@ -1,10 +1,12 @@
+
 <div class="bootstrap-wrapper">
     <div class="container">
-        <div class="row" style="margin-top: 20px;">
-            <div class="container text-center">
-                <!--  <img src="../../../assets/logo.png" alt="" width="150" >-->
-            </div>
+        <div class="row">
             <div class="col-md-6 offset-md-3">
+            <mat-card>
+                <div class="container text-center">
+                    <img src="../../../assets/logo.png" alt="" width="100" >
+               </div>
                 <h1 class="text-center">Register Here</h1>
                 <!-- {{user|json}} -->
                 <form (ngSubmit)="formSubmit()">
@@ -50,6 +52,7 @@
                         <button style="margin-left: 20px;" mat-raised-button color="accent">clear</button>
                     </div>
                 </form>
+            </mat-card>
             </div>
         </div>
     </div>
