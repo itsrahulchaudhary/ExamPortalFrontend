@@ -10,6 +10,8 @@ export class UserService {
 
   // Add User
   public addUser(user:any){
+    console.log("uuuuu");
+    console.log(user);
     return this.http.post(`${baseUrl}/user/`, user);
   }
 }
