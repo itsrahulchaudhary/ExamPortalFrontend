@@ -22,7 +22,8 @@
          *ngIf="isLoggedIn && user"
          mat-icon-button 
          class="example-icon mr20 ml20" 
-         aria-label="Example icon-button with share icon">
+         aria-label="Example icon-button with share icon"
+         routerLink="/admin/profile">
             {{ this.user.username }}    
      </button>
      <a  (click) = "logout()"

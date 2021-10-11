@@ -1,0 +1,48 @@
+<mat-card *ngIf="user">
+    <h1>Your Profile Detail</h1>
+    <!-- {{user | json}} -->
+    <mat-card-content>
+        <div class="bootstrao-wrapper">
+            <div class="container">
+                <div class="container text-center">
+                    <img src="https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg" 
+                    alt="" class="profile-imgae">
+                    <h1 class="mt20"> {{user.firstname}} {{user.lastname}} </h1>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-10 offset-md-1">
+                        <!-- table details -->
+                        <table class="table text-center" >
+                            <tr>
+                                <td>Username</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>UserId</td>
+                                <td>Exam{{user.userId}}</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user.phone}}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+                            <tr>
+                                <td>Status</td>
+                                <td>{{user.enabled?"ACTIVE":"NONACTIVE"}}</td>
+                            </tr>
+                        </table>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary">UPDATE</button>
+        <button mat-raised-button color="accent">SHARE</button>
+      </mat-card-actions>
+</mat-card>

@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   isLoggedIn = false;
   user:any = null;
-  dummy="Rahul";
+ 
 
   constructor(public login : LoginService, private router:Router) { }
 
