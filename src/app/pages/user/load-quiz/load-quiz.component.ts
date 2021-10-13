@@ -19,7 +19,7 @@ export class LoadQuizComponent implements OnInit {
       console.log(this.categoryId);
       if (this.categoryId == 0) {
         console.log("Load all the Quiz...");
-        this._quiz.quizzes().subscribe((data) => {
+        this._quiz.getActiveQuizzes().subscribe((data) => {
           this.quizzes = data;
           console.log(this.quizzes);
         },
@@ -32,11 +32,11 @@ export class LoadQuizComponent implements OnInit {
       } else {
         //this.quizzes=[];
         console.log("Load specific Quiz...");
-        this._quiz.getQuizzesofCategory(this.categoryId).subscribe((data)=>{
+        this._quiz.getActiveQuizzesofCategory(this.categoryId).subscribe((data)=>{
           this.quizzes=data;
         },
         (error)=>{
-          alert("Error in loading quiz data");
+        //  alert("Error in loading quiz data");
         }
         );
       }
