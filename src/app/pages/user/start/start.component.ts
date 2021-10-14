@@ -17,7 +17,9 @@ export class StartComponent implements OnInit {
   marksGot = 0;
   correctAnswers = 0;
   attempted = 0;
-  mod: any = "aaa";
+  isSubmit = false;
+  timer: any;
+  abc: any = "122";
   ngOnInit(): void {
 
     this.qId = this._route.snapshot.params.qid;
@@ -28,9 +30,11 @@ export class StartComponent implements OnInit {
     this._ques.getQuestionsOfQuizForTest(this.qId).subscribe((data) => {
       console.log(data);
       this.questions = data;
+      this.timer = this.questions.length * 2 * 60;
       this.questions.forEach((q: any) => {
         q['givenAnswer'] = '';
       });
+      this.startTimer();
     },
       (error) => {
         console.log(error);
@@ -56,22 +60,44 @@ export class StartComponent implements OnInit {
     }).then((e) => {
       // calculation
       if (e.isConfirmed) {
-        this.questions.forEach((q: any) => {
-          if (q.givenAnswer == q.answer) {
-            this.correctAnswers++;
-            let markSingle = this.questions[0].quiz.maxMarks / this.questions.length;
-            this.marksGot += markSingle;
-          }
-          if (q.givenAnswer.trim() != '') {
-            this.attempted++;
-          }
-        });
-        console.log("Correct Answer : " + this.correctAnswers);
-        console.log("Marks Got " + this.marksGot);
-        console.log("Attempted " + this.attempted);
+        this.evaluationQuiz()
 
       }
     });
+  }
+  startTimer() {
+    let t = window.setInterval(() => {
+      if (this.timer <= 0) {
+        //this.submitQuiz();
+        this.evaluationQuiz()
+        clearInterval(t);
+      } else {
+        this.timer--;
+      }
+    }, 1000);
+  }
+  public getFormattedTime() {
+    let mm = Math.floor(this.timer / 60);
+    let ss = this.timer - mm * 60;
+    return `${mm} min : ${ss} sec`;
+  }
+
+
+  public evaluationQuiz() {
+    this.isSubmit = true
+    this.questions.forEach((q: any) => {
+      if (q.givenAnswer == q.answer) {
+        this.correctAnswers++;
+        let markSingle = this.questions[0].quiz.maxMarks / this.questions.length;
+        this.marksGot += markSingle;
+      }
+      if (q.givenAnswer.trim() != '') {
+        this.attempted++;
+      }
+    });
+    console.log("Correct Answer : " + this.correctAnswers);
+    console.log("Marks Got " + this.marksGot);
+    console.log("Attempted " + this.attempted);
   }
 
 }
